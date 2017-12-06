@@ -39,23 +39,38 @@ var getCountry = function(countryName){
   }
 }
 
-var displayCountryInfo = function(countryName){
+var displayCountryInfo = function(country){
   var name = document.getElementById("country-name");
   var population = document.getElementById("country-population");
   var capital = document.getElementById("country-capital");
-  country = getCountry(countryName);
   name.innerText = country.name;
   population.innerText = country.population;
   capital.innerText = country.capital;
+
 }
+
+var saveLastSelectedCountry = function(country){
+  var jsonString = JSON.stringify(country);
+  localStorage.setItem('currentCountry', jsonString);
+}
+
+
 
 var app = function(){
   var url = "https://restcountries.eu/rest/v2/all";
   makeRequest(url, requestComplete);
 
+  var mapStart = {lat: 55.856998, lng:-4.244088};
+  var mapContainer = document.getElementById('main-map');
+  var mainMap = new MapWrapper(mapContainer, mapStart, 10);
+
   var countrySelect = document.getElementById('country-dropdown');
   countrySelect.addEventListener('change', function(){
-    displayCountryInfo(countrySelect.value);
+    country = getCountry(countrySelect.value);
+    displayCountryInfo(country);
+    saveLastSelectedCountry(country);
+    mainMap.recenterMap(country.latlng);
+    mainMap.markerAtCurrentCountry(country);
   })
 
 };

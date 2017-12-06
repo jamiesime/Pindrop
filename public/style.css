@@ -29,3 +29,10 @@ select{
   background-color: black;
   padding: 10px;
 }
+
+#main-map{
+  margin-left: 30%;
+  margin-right: 30%;
+  height: 400px;
+  width: 500px;
+}
