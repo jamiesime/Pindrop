@@ -3,12 +3,21 @@
   <head>
     <title>Country App</title>
     <script src='index.js'></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>Pindrop</h1>
-    <select name="country-dropdown" id="country-dropdown"> Select: </select>
-    <button id="list-countries-btn">ALL COUNTRIES</button>
-    <ul id='country-list'>
+    <div id="dropdown-area">
+      <select name="country-dropdown" id="country-dropdown"> Select: </select>
+    </div>
+    <div id="country-info">
+      <p>Name: </p>
+      <p id="country-name" class="country-subinfo"></p>
+      <p>Population: </p>
+      <p id="country-population" class="country-subinfo"></p>
+      <p>Capital: </p>
+      <p id="country-capital" class="country-subinfo"></p>
+    </div>
     </ul>
   </body>
 </html>
