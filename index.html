@@ -6,21 +6,30 @@
     <script src='index.js'></script>
     <script src='mapWrapper.js'></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   </head>
   <body>
-    <h1>Pindrop</h1>
+    <h2>Pindrop</h2>
     <div id="dropdown-area">
+      <p>Select: </p>
       <select name="country-dropdown" id="country-dropdown"> Select: </select>
     </div>
     <div id="country-info">
       <p>Name: </p>
-      <p id="country-name" class="country-subinfo"></p>
+      <p id="country-name" class="country-subinfo">?</p>
       <p>Population: </p>
-      <p id="country-population" class="country-subinfo"></p>
+      <p id="country-population" class="country-subinfo">?</p>
       <p>Capital: </p>
-      <p id="country-capital" class="country-subinfo"></p>
+      <p id="country-capital" class="country-subinfo">?</p>
     </div>
-    <div id='main-map'></div>
+    <div id="map-container">
+      <div id="main-map"></div>
+    </div>
+    <div id="bordering-container">
+      <p id="bordering-header">Bordering Countries</p>
+      <ul id="bordering-list"> </ul>
+    </div>
+
     </ul>
   </body>
 </html>

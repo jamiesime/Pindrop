@@ -1,19 +1,33 @@
 body {
-  background-color: tomato;
+  background-color: #66b3ff;
+  background-image: url("gradient.png");
+  font-family: 'PT-Sans', sans-serif;
 }
 
-h1 {
+h2 {
   text-align: center;
+  color: white;
 }
 
 select{
   font-size: 16px;
+  color: white;
+  background-color: #0066BB;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
 }
 
 #dropdown-area {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#dropdown-area > p {
+  margin-right: 10px;
 }
 
 #country-info{
@@ -23,16 +37,50 @@ select{
 }
 
 .country-subinfo {
-  margin-left: 20px;
+  margin-left: 10px;
   margin-right: 20px;
   color: white;
-  background-color: black;
+  background-color: #0066BB;
   padding: 10px;
+  border-radius: 5px;
+}
+
+#map-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #main-map{
-  margin-left: 30%;
-  margin-right: 30%;
-  height: 400px;
-  width: 500px;
+  height: 350px;
+  width: 600px;
+  border-style: double;
+  border-color: black;
+}
+
+#bordering-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bordering-container > p {
+  background-color: #0066BB;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  list-style: none;
+  text-decoration: none;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #0066BB;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+
 }

@@ -39,6 +39,23 @@ var getCountry = function(countryName){
   }
 }
 
+var getCountryByCode = function(countryCode){
+  for (country of allCountries){
+    if (country.alpha3Code === countryCode){
+      return country;
+      debugger;
+    }
+  }
+}
+
+var getBorderingCountries = function(country){
+  bordering = [];
+  for (border of country.borders){
+    bordering.push(border);
+  }
+  return bordering;
+}
+
 var displayCountryInfo = function(country){
   var name = document.getElementById("country-name");
   var population = document.getElementById("country-population");
@@ -47,6 +64,40 @@ var displayCountryInfo = function(country){
   population.innerText = country.population;
   capital.innerText = country.capital;
 
+}
+
+var handleBorderBtnClick = function(mainMap, country){
+  displayCountryInfo(country);
+  saveLastSelectedCountry(country);
+  mainMap.recenterMap(country.latlng);
+  mainMap.markerAtCurrentCountry(country);
+  borders = getBorderingCountries(country);
+  displayBorderingCountries(mainMap, borders);
+  var countrySelect = document.getElementById('country-dropdown');
+  countrySelect.value = country.name;
+};
+
+var displayBorderingCountries = function(mainMap, bordering){
+  var borderArea = document.getElementById('bordering-list');
+  var borderText = document.getElementById('bordering-header');
+  while (borderArea.firstChild){
+    borderArea.removeChild(borderArea.firstChild);
+  }
+  if (bordering != undefined && bordering.length > 0){
+    borderText.innerText = bordering.length + " bordering countries";
+    for (border of bordering) {
+      var btn = document.createElement('button');
+      btn.innerText = border;
+      borderArea.appendChild(btn);
+      btn.addEventListener('click', function(){
+        var country = getCountryByCode(this.innerText);
+        handleBorderBtnClick(mainMap, country);
+      });
+    };
+  }
+  else {
+    borderText.innerText = "No bordering countries."
+  }
 }
 
 var saveLastSelectedCountry = function(country){
@@ -71,6 +122,8 @@ var app = function(){
     saveLastSelectedCountry(country);
     mainMap.recenterMap(country.latlng);
     mainMap.markerAtCurrentCountry(country);
+    borders = getBorderingCountries(country);
+    displayBorderingCountries(mainMap, borders);
   })
 
 };
